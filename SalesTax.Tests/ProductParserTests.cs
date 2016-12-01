@@ -32,6 +32,7 @@ using SalesTax.Core.Data;
 using SalesTax.Core.Parsing;
 using SalesTax.Core;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace SalesTax.Tests
 {
@@ -58,7 +59,7 @@ namespace SalesTax.Tests
         [InlineData("book at 12.49")]
         [InlineData("1.5 books at 12.49")]
         [InlineData("1 at 12.49")]
-        public void ShouldNot_ParseProduct_When_MismatchingInput(string input)
+        public void ShouldNot_ParseProduct_When_BadProductInput(string input)
         {
             // Arrange
             var productParser = new ProductParser();
@@ -101,6 +102,43 @@ namespace SalesTax.Tests
                 Assert.Equal(expectedPrice, product.Price);
                 Assert.Equal(expectedPrice * expectedQuantity, product.Amount);
             }
+        }
+
+        [Fact]
+        [TraitCategory("ProductParser - parse all")]
+        public void Should_ThrowFormatException_When_BadProductInputs()
+        {
+            // Arrange
+            var productParser = new ProductParser();
+            var productStringList = new List<string>
+            {
+                "1 imported box of chocolates at 11.25",
+                "1.5 books at 12.49"
+            };
+
+            // Act & Assert
+            var exception = Assert.Throws<FormatException>(() => productParser.ParseAll(productStringList));
+            Assert.Equal($"Unable to parse \"{productStringList[1]}\"", exception.Message);
+        }
+
+        [Fact]
+        [TraitCategory("ProductParser - parse all")]
+        public void Should_ParseAllProductInputs()
+        {
+            // Arrange
+            var productParser = new ProductParser();
+            var productStringList = new List<string>
+            {
+                "1 book at 12.49",
+                "1 music CD at 14.99",
+                "1 chocolate bar at 0.85"
+            };
+
+            // Act
+            var products = productParser.ParseAll(productStringList);
+
+            // Assert
+            Assert.Equal(productStringList.Count, products.Count);
         }
     }
 }

@@ -32,6 +32,9 @@ using SalesTax.Core.Engine;
 using SalesTax.Tests.Attributes;
 using Xunit;
 using System.Linq;
+using SalesTax.Core.Parsing;
+using SalesTax.Core;
+using System.Globalization;
 
 namespace SalesTax.Tests
 {
@@ -179,8 +182,8 @@ namespace SalesTax.Tests
         }
 
         [Theory]
-        [MemberData(nameof(ProductSource))]
         [TraitCategory("OrderInvoiceManager - orderInvoice amounts")]
+        [MemberData(nameof(ProductSource))]
         public void Should_ReturnExpectedAmounts_When_CalculatingTaxes(Product product, decimal expectedTaxAmount, decimal expectedAmount)
         {
             // Arrange
@@ -196,8 +199,8 @@ namespace SalesTax.Tests
         }
 
         [Theory]
-        [MemberData(nameof(OrderInvoiceSource))]
         [TraitCategory("OrderInvoiceManager - orderInvoice amounts")]
+        [MemberData(nameof(OrderInvoiceSource))]
         public void Should_ReturnExpectedAmounts_When_CalculatingTaxes(List<Product> products, decimal expectedTaxAmount, decimal expectedTotalAmount)
         {
             // Arrange
@@ -211,6 +214,29 @@ namespace SalesTax.Tests
             // Assert
             Assert.Equal(expectedTaxAmount, totalTaxes);
             Assert.Equal(expectedTotalAmount, totalAmount);
+        }
+
+        [Theory]
+        [TraitCategory("OrderInvoiceManager - print computed product")]
+        [InlineData("1 book at 12.49", "1 book: 12.49")]
+        [InlineData("1 music CD at 14.99", "1 music CD: 16.49")]
+        [InlineData("1 chocolate bar at 0.85", "1 chocolate bar: 0.85")]
+        [InlineData("1 imported box of chocolates at 11.25", "1 imported box of chocolates: 11.85")]
+        public void Should_ReturnExpectedString_When_PrintingComputedProduct(string productInput, string expectedOutput)
+        {
+            using (new CultureOverride(CultureInfo.InvariantCulture))
+            {
+                // Arrange
+                var productParser = new ProductParser();
+                var orderInvoiceManager = new OrderInvoiceManager();
+
+                // Act
+                var orderInvoice = orderInvoiceManager.CreateInvoice(productParser.ParseAll(new List<string> { productInput }));
+
+                // Assert
+                Assert.Equal(1, orderInvoice.Products.Count);
+                Assert.Equal(expectedOutput, orderInvoice.Products.Single().ToString());
+            }
         }
     }
 }

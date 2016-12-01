@@ -28,6 +28,7 @@
 using System;
 using System.Text.RegularExpressions;
 using SalesTax.Core.Data;
+using System.Collections.Generic;
 
 namespace SalesTax.Core.Parsing
 {
@@ -61,6 +62,25 @@ namespace SalesTax.Core.Parsing
             product = new Product(origin, description, price, quantity);
 
             return true;
+        }
+
+        public List<Product> ParseAll(List<string> productStringList)
+        {
+            var products = new List<Product>(productStringList.Count);
+
+            foreach (var productString in productStringList)
+            {
+                if (TryParse(productString, out Product p))
+                {
+                    products.Add(p);
+                }
+                else
+                {
+                    throw new FormatException($"Unable to parse \"{productString}\"");
+                }
+            }
+
+            return products;
         }
     }
 }

@@ -38,8 +38,15 @@ namespace SalesTax.Core.Data
             _tax = tax;
         }
 
+        private string ProductDescription => _product.Origin == ProductOrigin.Imported ? $"imported {_product.Description}" : _product.Description;
+
         public decimal TaxAmount => _product.Quantity * _tax;
 
         public decimal Amount => _product.Amount + TaxAmount;
+
+        public override string ToString()
+        {
+            return $"{_product.Quantity} {ProductDescription}: {Amount:0.00}";
+        }
     }
 }
