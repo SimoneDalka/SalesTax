@@ -40,7 +40,7 @@ The solution was written using `Visual Studio 2017 RC`.
 
 #### Clean & Build from Command Prompt
 If you love the "*Command Prompt*" you can compile the entire solution from command line:
-- open a terminal in solution folder
+- open a command prompt in solution folder
 - "*dotnet restore*"
 - "*dotnet build*"
 
@@ -49,7 +49,7 @@ If you love the "*Command Prompt*" you can compile the entire solution from comm
 - from the top menu click on `Debug -> Start Debugging` (or simply use the keyboard shortcut `F5`)
 
 #### Run from Command Prompt
-- open a terminal in **Salestax** project folder (where `Program.cs` file is located)
+- open a command prompt in **Salestax** project folder (where `Program.cs` file is located)
 - "*dotnet run*"
 
 ### 3) Test the code
@@ -63,5 +63,5 @@ Every test inside the project **Salestax.Tests** has comments to describe what's
 - run all tests from the Test Explorer Tab
 
 #### Test from Command Prompt
-- open a terminal in **Salestax.Tests** project folder (where all test classes are located)
+- open a command prompt in **Salestax.Tests** project folder (where all test classes are located)
 - "*dotnet test*"
