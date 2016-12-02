@@ -41,8 +41,8 @@ The solution was written using `Visual Studio 2017 RC`.
 #### Clean & Build from Command Prompt
 If you love the "*Command Prompt*" you can compile the entire solution from command line:
 - open a terminal in solution folder
-- "*dotnet **restore***"
-- "*dotnet **build***"
+- "*dotnet restore*"
+- "*dotnet build*"
 
 ### 2) Run the code
 #### Run from Visual Studio
@@ -50,7 +50,7 @@ If you love the "*Command Prompt*" you can compile the entire solution from comm
 
 #### Run from Command Prompt
 - open a terminal in **Salestax** project folder (where `Program.cs` file is located)
-- "*dotnet **run***"
+- "*dotnet run*"
 
 ### 3) Test the code
 Every test inside the project **Salestax.Tests** has comments to describe what's going on.
@@ -64,4 +64,4 @@ Every test inside the project **Salestax.Tests** has comments to describe what's
 
 #### Test from Command Prompt
 - open a terminal in **Salestax.Tests** project folder (where all test classes are located)
-- "*dotnet **test***"
+- "*dotnet test*"
