@@ -193,7 +193,7 @@ namespace SalesTax.Tests
             var orderInvoice = orderInvoiceManager.CreateInvoice(new List<Product> { product });
 
             // Assert
-            var computedProduct = orderInvoice.Products.Single();
+            var computedProduct = orderInvoice.Products[0];
             Assert.Equal(expectedTaxAmount, computedProduct.TaxAmount);
             Assert.Equal(expectedAmount, computedProduct.Amount);
         }
