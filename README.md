@@ -29,6 +29,7 @@ Total: 29.83
 The solution was written using `Visual Studio 2017 RC`. 
 - You have to download the `1.0.0-preview4-004175 .NET Core SDK Installer` from the [.NET Core command-line (CLI) tools site](https://github.com/dotnet/cli)
 - You have to download the `Community` edition of [Visual Studio](https://www.visualstudio.com/vs/visual-studio-2017-rc/) in order to modify and run the code.
+    - Please ensure you check the `.NET Core and Docker Preview` when you install the product
 
 ### 1) Compile the code
 #### Clean & Build from Visual Studio
