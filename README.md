@@ -26,10 +26,16 @@ Total: 29.83
 ```
 
 ## Dev box Setup
-The solution was written using `Visual Studio 2017 RC`. 
-- You have to download the `1.0.0-preview4-004175 .NET Core SDK Installer` from the [.NET Core command-line (CLI) tools site](https://github.com/dotnet/cli)
-- You have to download the `Community` edition of [Visual Studio](https://www.visualstudio.com/vs/visual-studio-2017-rc/) in order to modify and run the code.
-    - Please ensure you check the `.NET Core and Docker Preview` when you install the product
+In order to compile and run the project you need:
+- the `Microsoft .NET Core SDK`:
+    - you have to download the `1.0.0-preview4-004175 .NET Core SDK Installer` from the [.NET Core command-line (CLI) tools site](https://github.com/dotnet/cli#installers-and-binaries) (use ".NET Core SDK Installer" column)
+- the `Microsoft .NET Core 1.1 runtime`:
+    - you have to download the `Current release` from the [.NET Core Site](https://www.microsoft.com/net/download/core)
+    - please ensure to select "*Current*" and "*Runtime*" buttons
+
+If you want an IDE to modify and run the code you have to use `Visual Studio 2017 RC`:
+- you have to download the `Community` edition of [Visual Studio](https://www.visualstudio.com/vs/visual-studio-2017-rc/)
+    - please ensure you check the `.NET Core and Docker Preview` when you install the product
 
 ### 1) Compile the code
 #### Clean & Build from Visual Studio
@@ -40,7 +46,7 @@ The solution was written using `Visual Studio 2017 RC`.
 
 #### Clean & Build from Command Prompt
 If you love the "*Command Prompt*" you can compile the entire solution from command line:
-- open a command prompt in solution folder
+- open a command prompt in solution folder (where the *SalesTax.sln* file is located)
 - "*dotnet restore*"
 - "*dotnet build*"
 
