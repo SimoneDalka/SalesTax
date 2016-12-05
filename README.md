@@ -55,11 +55,11 @@ If you love the "*Command Prompt*" you can compile the entire solution from comm
 - from the top menu click on `Debug -> Start Debugging` (or simply use the keyboard shortcut `F5`)
 
 #### Run from Command Prompt
-- open a command prompt in **Salestax** project folder (where `Program.cs` file is located)
+- open a command prompt in **SalesTax** project folder (where `Program.cs` file is located)
 - "*dotnet run*"
 
 ### 3) Test the code
-Every test inside the project **Salestax.Tests** has comments to describe what's going on.
+Every test inside the project **SalesTax.Tests** has comments to describe what's going on.
 * `// Arrange` -> setup test environment (input, variables, ...)
 * `// Act` -> execute the operation you want to test
 * `// Assert` -> do all the checks to establish the test result.
@@ -69,5 +69,5 @@ Every test inside the project **Salestax.Tests** has comments to describe what's
 - run all tests from the Test Explorer Tab
 
 #### Test from Command Prompt
-- open a command prompt in **Salestax.Tests** project folder (where all test classes are located)
+- open a command prompt in **SalesTax.Tests** project folder (where all test classes are located)
 - "*dotnet test*"
